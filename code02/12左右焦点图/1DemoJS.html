@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Document</title>
     <style>
-        body, ul, ol, li, img {
+        body,
+        ul,
+        ol,
+        li,
+        img {
             margin: 0;
             padding: 0;
             list-style: none;
         }
-
+        
         #box {
             width: 490px;
             height: 270px;
@@ -18,24 +23,24 @@
             border: 1px solid #ccc;
             margin: 100px auto 0;
         }
-
+        
         .ad {
             width: 490px;
             height: 270px;
-            overflow: hidden;
+            /*overflow: hidden;*/
             position: relative;
         }
-
+        
         #box img {
             width: 490px;
         }
-
+        
         .ad ol {
             position: absolute;
             right: 10px;
             bottom: 10px;
         }
-
+        
         .ad ol li {
             width: 20px;
             height: 20px;
@@ -48,29 +53,29 @@
             cursor: pointer;
             display: inline;
         }
-
+        
         .ad ol li.current {
             background: yellow;
         }
-
+        
         .ad ul li {
             float: left;
         }
-
+        
         .ad ul {
             position: absolute;
             top: 0;
             width: 2940px;
         }
-
+        
         .ad ul li.current {
             display: block;
         }
-
+        
         #arr {
             display: none;
         }
-
+        
         #arr span {
             width: 40px;
             height: 40px;
@@ -89,35 +94,32 @@
             opacity: 0.3;
             border: 1px solid #fff;
         }
-
+        
         #arr #right {
             right: 5px;
             left: auto;
         }
     </style>
 </head>
-<body>
-<div id="box" class="all">
-    <div class="ad">
-        <ul id="imgs">
-            <li><img src="images/1.jpg"/></li>
-            <li><img src="images/2.jpg"/></li>
-            <li><img src="images/3.jpg"/></li>
-            <li><img src="images/4.jpg"/></li>
-            <li><img src="images/5.jpg"/></li>
-        </ul>
-    </div>
-    <div id="arr"><span id="left">&lt;</span><span id="right">&gt;</span></div>
-</div>
-</body>
-</html>
-<script>
 
+<body>
+    <div id="box" class="all">
+        <div class="ad">
+            <ul id="imgs">
+                <li><img src="images/1.jpg" /></li>
+                <li><img src="images/2.jpg" /></li>
+                <li><img src="images/3.jpg" /></li>
+                <li><img src="images/4.jpg" /></li>
+                <li><img src="images/5.jpg" /></li>
+            </ul>
+        </div>
+        <div id="arr"><span id="left">&lt;</span><span id="right">&gt;</span></div>
+    </div>
+</body>
+<script>
     function $(id) {
         return document.getElementById(id);
     }
-
-    //要做事先找人
     var box = $("box");
     var ad = box.children[0];
     var arr = $("arr");
@@ -126,67 +128,45 @@
     var arrRight = $("right");
     var arrLeft = $("left");
     var imgWidth = ad.offsetWidth;
-    //alert(imgWidth);
 
 
-    //鼠标经过盒子 显示箭头 离开消失
-    box.onmouseover = function () {
-        arr.style.display = "block";//装有小箭头的盒子显示出来
+    box.onmouseover = function() {
+        arr.style.display = "block";
     }
-    box.onmouseout = function () {
+    box.onmouseout = function() {
         arr.style.display = "none";
     }
 
-    //点击按钮 让图片移动到对应的位置
-    var pic = 0;//用来表示当前应该显示的图片的索引
-    arrRight.onclick = function () {
-        //判断边界 如果 pic 小于 最后一张图片的索引号 就可以执行 否则 不执行
-        //最后一张图片的索引号 lis.lenght-1
-        if (pic < lis.length - 1) {
-            pic++;//相当于pic = pic + 1;
-            //target 和 pic 有关 和 图片宽度 而且是负数
+    var pic = 0;
+    arrRight.onclick = function() {
+        if (pic < lis.legth - 1) {
+            pic++;
             var target = -pic * imgWidth;
             animate(ul, target);
         }
     }
-    arrLeft.onclick = function () {
-        //判断边界 如果 pic 小于 最后一张图片的索引号 就可以执行 否则 不执行
-        //最后一张图片的索引号 lis.lenght-1
+    arrLeft.onclick = function() {
         if (pic > 0) {
-            pic--;//相当于pic = pic + 1;
-            //target 和 pic 有关 和 图片宽度 而且是负数
+            pic--;
             var target = -pic * imgWidth;
             animate(ul, target);
         }
     }
-
 
     function animate(obj, target) {
-        clearInterval(obj.timer);//为了防止重复调用 先清理一下
-        obj.timer = setInterval(function () {
-            var leader = obj.offsetLeft;//获取对象当前位置
-            //往右走 left数值越来越大 step 正数
-            //往左走 left数值越来越小 step 负数
-            //如果leader < target leader 在左边 就应该往右走
+        clearInterval(obj.timer);
+        obj.timer = function() {
+            var leader = obj.offsetLeft;
             var step = 20;
-            /*if (leader < target) {
-             step = step;
-             } else {
-             step = -step;
-             }*/
-            step = leader < target ? step : -step;//判断对象移动的方向
-            //判断终点 如果没到终点就执行动画
-            //Math.abs(leader - target) 对象当前位置和target的距离
-            //如果距离大于步长 说明还可以继续移动 否则说明再迈一步就超过终点了
+            step = leader < target ? step : -step;
             if (Math.abs(leader - target) > Math.abs(step)) {
-                //leader = leader + step
                 obj.style.left = leader + step + "px";
             } else {
                 clearInterval(obj.timer);
-                //手动将快要到达终点的对象放到终点
                 obj.style.left = target + "px";
             }
-        }, 25)
+        }
     }
-
 </script>
+
+</html>
