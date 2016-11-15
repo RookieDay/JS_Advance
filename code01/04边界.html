@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    console.log(/chuan/.test("chuan"));
+    console.log(/chuan/.test("chuang"));
+    console.log(/^chuan/.test("gchuan")); //false ^在中括号内表示 非 在外边表示开头
+    console.log(/chuan$/.test("chuang")); //false $表示结尾
+    console.log(/^chuan$/.test("chuan")); //^$ true一起用 表示 精确匹配 必须是我想要的那个
+    console.log(/^chuan$/.test("chuanchuan")); //false 必须是我要的那个 重复出现也不行
+</script>

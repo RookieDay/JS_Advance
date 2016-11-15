@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    console.log(/^a$/.test("a"));//true
+    console.log(/^a$/.test("b"));//false
+    console.log(/^a$/.test("ba"));//false
+    //量词
+    console.log("-----*-----")//重复零次或更多 x>=0
+    console.log(/^a*$/.test("a"));
+    console.log(/^a*$/.test("aaaaaaaaaaaa"));
+    console.log(/^a*$/.test(""));
+    console.log(/^a*$/.test("aaaab"));//false
+    console.log("-----+-----")//重复一次或更多次 x>=1
+    console.log(/^a+$/.test("aaaaaaaaaaaa"));//true
+    console.log(/^a+$/.test("a"));//true
+    console.log(/^a+$/.test(""));//false
+    console.log("-----?-----")//重复零次或一次  x=(0||1)
+    console.log(/^a?$/.test(""));//true
+    console.log(/^a?$/.test("a"));//true
+    console.log(/^a?$/.test("aaaaaaa"));//false 可以出现零次或一次 多次不行
+    console.log("-----{}系列-----");
+    console.log(/^a{3}$/.test("aaa"))//{n}	n次	x=n
+    console.log(/^a{3,}$/.test("aaaaa"))//{n,}	重复n次或更多  x>=n
+    console.log(/^a{3,5}$/.test("aaaaa"))//{n,m} 重复出现的次数比n多但比m少 n<=x<=m
+    console.log("-----用{}系列来表示*+?-----");
+    console.log(/^a*$/.test("a"));
+    console.log(/^a{0,}$/.test("a"));
+    console.log(/^a+$/.test("a"));
+    console.log(/^a{1,}$/.test("a"));
+    console.log(/^a?$/.test("a"));
+    console.log(/^a{0,1}$/.test("a"));
+
+</script>

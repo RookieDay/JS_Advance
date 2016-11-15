@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #demo {
+            position: absolute; /*做动画一定要记得加定位呦*/
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+    </style>
+</head>
+<body>
+<button id="btn">奔跑吧盒子</button>
+<div id="demo"></div>
+</body>
+</html>
+<script>
+
+    //要做事先找人
+    var btn = document.getElementById("btn");
+    var demo = document.getElementById("demo");
+    var timer = null;
+
+    //点击按钮 让盒子跑到400px的位置
+    btn.onclick = function () {
+        timer = setInterval(function () {
+            if (demo.offsetLeft < 400) {
+                //leader = leader + step
+                demo.style.left = demo.offsetLeft + 10 + "px";//一定注意加px呦
+            } else {
+                clearInterval(timer);
+            }
+            console.log("代码还在执行");
+        }, 25);
+
+    }
+
+</script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    //比如我们现在在做一个OA系统
+    //构造函数模式
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+        var salary = 1000000;
+        this.getSalary = function (password) {
+            if (password == "123456") {
+                return salary;
+            }
+        }//特权方法
+        this.sayHello = function () {
+            alert("大家好，我是" + this.name + "我今年" + this.age);
+        }
+    }
+
+    var person1 = new Person("xiaodongdong", 18);
+    console.log(person1.name);
+    console.log(person1.age);
+    console.log(person1.salary);
+    console.log(person1.getSalary("123456"));
+
+
+</script>

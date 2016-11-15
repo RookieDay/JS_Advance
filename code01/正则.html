@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    //构造函数  var 变量名= new RegExp(/表达式/);
+
+    var regEx = new RegExp(/\d/); // digit 数字
+    console.log(regEx.test("1")); //true 如果能够匹配上 就返回 true 否则 false
+    console.log(regEx.test("a")); //false
+    console.log(regEx.test("a1")); //true 只要找到我想要的就是true
+
+    //直接量 var 变量名= /表达式/;
+    var regEx2 = /\d/; //我们一般用直接量来声明 因为他简单方便
+
+    /\d/.test("1"); //如果只是用一下 直接写就可以了
+</script>

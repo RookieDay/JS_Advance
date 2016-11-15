@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    //[]表示 一位
+    console.log(/^[abc]$/.test("a"));
+    //{}是量词 表示出现的次数
+    console.log(/^[abc]{2}$/.test("ac"));
+    //()表示一组
+    console.log(/^a{2}$/.test("aa"));
+    console.log(/^chuan{2}$/.test("chuann"));
+    console.log(/^(chuan){2}$/.test("chuanchuan"));
+
+</script>

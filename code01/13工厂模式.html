@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    //工厂模式
+    function Person(name, age) {
+        var obj = {};//object
+        obj.name = name;
+        obj.age = age;
+        obj.sayHello = function () {
+            alert("大家好，我是" + obj.name + "我今年" + obj.age);
+        }
+        return obj;
+    }
+
+    var person1 = Person("xiaodongdong", 18);
+    var person2 = Person("xiaolonglong", 19);
+    var person3 = Person("xiao", 20);
+
+    /*person1.sayHello();
+    person2.sayHello();
+    person3.sayHello();*/
+
+    console.log(person1 instanceof Person);
+
+
+</script>

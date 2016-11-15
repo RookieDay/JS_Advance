@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    function fn() {
+        var num = 0;
+        return function fn2() {
+            return num;
+        }//特权方法
+    }
+    console.log(fn);
+    console.log(fn());
+    console.log(fn()());
+
+</script>

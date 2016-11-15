@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    ///\d/.test("")
+
+    var str = "111";
+    console.log(str.replace(/\d/, "a"));//a11 replace方法 只要找到一个匹配项 进行替换 就完了
+    console.log(str.replace(/\d+/, "a"));//a
+    console.log(str.replace(/\d/g, "a"));//aaa g global 全局模式
+
+    var str1 = "   1111  ";
+    console.log(str1);
+    console.log(str1.length);
+    var str2 = str1.replace(/^\s+|\s+$/g, "");
+    console.log(str2);
+    console.log(str2.length);
+
+    function trim(str) {
+        return str.replace(/^\s+|\s+$/g, "");
+    }
+
+
+</script>

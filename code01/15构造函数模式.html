@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    //构造函数模式
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+        this.sayHello = function () {
+            alert("大家好，我是" + this.name + "我今年" + this.age);
+        }
+    }
+
+    var person1 = new Person("xiaodongdong", 18);
+    var person2 = new Person("xiaolonglong", 19);
+    var person3 = new Person("xiao", 20);
+
+
+    //console.log(person1 instanceof Person);
+
+    console.log(person1.sayHello == person2.sayHello);//false
+
+
+</script>

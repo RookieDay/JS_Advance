@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #demo {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo" style="left:20px;margin: 20px;"></div>
+</body>
+
+</html>
+<script>
+    var demo = document.getElementById("demo");
+    console.log(demo.style.left); //如果不加定位 style.left 可能是无效的 20px 
+    console.log(demo.offsetLeft); //输出的是盒子真实的left数值  40
+</script>

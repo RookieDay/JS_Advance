@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //现在只是学习基础语法 这些东西都是找到想要的就可以了
+    console.log(/chuan/.test("chuan"));//true 我要什么你给我什么
+    console.log(/chuan/.test("chuang"));//true 我想要一个苹果 你给我一个苹果和一个桃子
+    console.log(/chuan/.test("gchuan"));//true 我想要一个苹果 你给我一个桃子和一个苹果
+    console.log(/chuan/.test("chugan"));//false
+
+    console.log("------[ ]-----");//简单类
+    console.log(/[abc]/.test("a"));//true
+    console.log(/[abc]/.test("d"));//false
+    console.log(/[abc]/.test("da"));//true 我想要一个苹果 你给我一个桃子和一个苹果
+    console.log("------[^ ]-----");//负向类
+    console.log(/[^abc]/.test("a"));//false
+    console.log(/[^abc]/.test("d"));//true
+    console.log(/[^abc]/.test("ad"));//true
+    console.log("------[ - ]-----");//范围类
+    console.log(/[abcdefghi]/.test("a"));
+    console.log(/[a-i]/.test("a"));
+    console.log(/[a-z]/.test("a"));
+    console.log(/[A-Z]/.test("a"));
+    console.log(/[0-9]/.test("a"));
+    console.log("-----------");//组合类
+    console.log(/[a-zA-Z0-9]/.test("a"));
+    console.log(/[a-iA-I0-5]/.test("a"));
+
+</script>

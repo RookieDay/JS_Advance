@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        #one {
+            position: absolute;
+        }
+
+        /*#two {
+            position: absolute;
+        }*/
+    </style>
+</head>
+<body>
+<div id="one">
+    <div id="two">
+        <div id="three"></div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+
+    var three = document.getElementById("three");
+    console.log(three.offsetParent);//如果父级都没有定位就一直找到body为止
+    //找的是距离最近的带有定位的父盒子
+    //offsetParent找的是干爹
+
+    console.log(three.parentNode);//找的是亲爹
+
+</script>

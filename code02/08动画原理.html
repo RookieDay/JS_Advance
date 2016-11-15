@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">奔跑吧盒子</button>
+<div id="box"></div>
+</body>
+</html>
+<script>
+
+    //要做事先找人
+    var box = document.getElementById("box");
+    var btn = document.getElementById("btn");
+    var timer = null;
+
+    //点击按钮让盒子奔跑
+    btn.onclick = function () {
+        clearInterval(timer);
+        timer = setInterval(function () {
+            var leader = box.offsetLeft;
+            var step = 10;
+            var target = 400;
+            //判断终点 如果没到终点就执行动画
+            if (leader < target) {
+                //leader = leader + step
+                box.style.left = leader + step + "px";
+            } else {
+                clearInterval(timer);
+            }
+        }, 25)
+    }
+
+</script>

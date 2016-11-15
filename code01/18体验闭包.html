@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function outerFun() {
+        var a = 0;
+        function innerFun() {
+            a++;//包的是变量
+            alert(a);
+        }//这就是个包
+        return innerFun;//注意这里
+    }
+    var obj = outerFun();
+    obj();//1
+    obj();//2
+    var obj2 = outerFun();
+    obj2();//1
+    obj2();//2
+
+</script>

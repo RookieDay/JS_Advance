@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    function fn() {
+        this.x = 1;//this指向的是当前函数的调用者
+    }
+    window.fn();
+    console.log(window.x);
+
+
+    //new 用来改变函数内部this的指向 指向前面的变量
+    function fn2() {
+        this.y = 2;
+    }
+    var demo = new fn2();
+    console.log(demo.y);
+
+
+</script>
