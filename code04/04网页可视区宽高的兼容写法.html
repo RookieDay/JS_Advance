@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    /*正常浏览器（包括IE9+）
+     window.innerWidth
+     标准模式（包括IE9-）
+     document.documentElement.clientWidth
+     怪异模式
+     document.body.clientWidth*/
+
+    window.onresize = function () {
+        //var clientWidth = window.innerWidth;
+        var clientWidth = window.innerWidth|| document.documentElement.clientWidth|| document.body.clientWidth|| 0;
+        document.title = clientWidth;
+    }
+
+
+</script>

@@ -369,3 +369,58 @@ scroll正传
     document.body.scrollTop
     可以合写为
     var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+client正传
+    @clientWidth和clientHeight：
+    偏移offsetWidth: width  +  padding  +  border
+    卷曲scrollWidth: width  +  padding  不包含border   内部内容的大小
+    可视clientWidth: width  +  padding  不包含border
+clientTop和clientLeft
+    clientTop和clientLeft没用，他们通常指的就是border的距离（如果有滚动条会包含滚动条的宽度）
+    谁见过滚动条在顶部或者左侧的？！
+
+网页可视区宽高
+    @网页可视区宽高的兼容写法
+    页面可视区宽高非常常用，但是有很大的兼容性问题
+    正常浏览器（包括IE9+）
+    window.innerWidth
+    标准模式（包括IE9-）
+    document.documentElement.clientWidth
+    怪异模式 
+    document.body.clientWidth
+    因此，可以合写为
+    var clientWidth = window.innerWidth|| document.documentElement.clientWidth|| document.body.clientWidth|| 0;
+    @封装自己的client()
+    由于非常常用，我们可以模仿JQuery封装一个自己的client()方法，返回可视区宽度和高度
+    @体会响应式布局原理
+    当我们的页面宽度 大于 960 像素的时候 页面为红色并显示computer
+    当我们的页面宽度 大于 640 小于 960 页面为绿色并显示tablet 
+    剩下的页面为蓝色并显示mobile
+三大系列总结
+    offsetWidth	    scrollWidth 	clientWidth
+    offsetHeight	scrollHeight	clientHeight
+    offsetLeft		scrollLeft		clientLeft
+    offsetTop		scrollTop		clientTop
+    offsetParent	scroll()		client()
+
+获取样式属性
+    @访问属性的两种方式
+        对象有 属性和方法  属性不带括号
+        比如，有一个div我们想得到他的宽度，可以通过div.style.width
+        这样的写法虽然简单，但是不灵活，没有办法通过传参的形式获取属性
+        因此我们还有另外一种写法
+        div.style["width"]
+    @获取当前样式属性的方法
+        工作中我们经常需要获取一个盒子的最终样式
+        然而 通过 div. style.left 只能得到行内样式，而样式可能来自 内嵌 或者 外链 的样式表
+        我们前面学过的offsetLeft也只能得到距离offsetParent左侧的距离
+        那么如何到计算后的样式属性值呢：
+        IE
+        div.currentStyle.left或 div.current["left"]
+        w3c  
+        window.getComputedStyle(元素,伪元素)["left"]
+        一般情况下没有伪元素，我们用 null 来替代。
+    @封装获取样式属性值的兼容方法
+        //需求 获取任意对象的任意属性
+
+

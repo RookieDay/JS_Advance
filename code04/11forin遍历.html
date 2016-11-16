@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    var arr = [1, 2, 3, 4, 5];
+
+    var json1 = {
+        "name": "xiaodongdong",
+        "age": 18,
+        sayHello: function () {
+            alert(json.name + json.age);
+        }
+    }
+
+    /*for (var i = 0; i < arr.length; i++) {
+     console.log(arr[i]);
+     }*/
+
+    /*for (var i in arr) {
+     console.log(i);//i是索引
+     console.log(arr[i]);//arr[i]是数值
+     }*/
+
+    for (var k in json1) {
+    //键值对
+    //属性名 属性值
+    // key value
+    // k v
+        //console.log(k);
+        console.log(json1[k]);
+    }
+
+
+</script>

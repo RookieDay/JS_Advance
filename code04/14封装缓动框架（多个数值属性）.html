@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #demo {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <div id="demo"></div>
+</body>
+
+</html>
+<script>
+    var btn = document.getElementById("btn");
+    var demo = document.getElementById("demo");
+    //var timer = null;
+
+    // btn.onclick = function () {
+    //     /*animate(demo, "top", 400);
+    //      animate(demo, "left", 400);
+    //      animate(demo, "width", 400);
+    //      animate(demo, "height", 400);*/
+    //     animate(demo, {"width": 150, "height": 400, "top": 200, "left": 400});
+    // }
+
+    // //改变任意对象的任意属性到目标值
+    // //同时改变多个数值属性
+    // function animate(obj, json) {
+    //     clearInterval(obj.timer);
+    //     obj.timer = setInterval(function () {
+    //         for (var k in json) {
+    //             //json
+    //             //键值对
+    //             //属性名:属性的期望值
+    //             //k:json[k]
+    //             var leader = parseInt(getStyle(obj, k)) || 0;
+    //             var target = json[k];
+    //             var step = (target - leader) / 10;
+    //             step = step > 0 ? Math.ceil(step) : Math.floor(step);
+    //             if (leader != target) {
+    //                 obj.style[k] = leader + step + "px";
+    //             } else {
+    //                 clearInterval(obj.timer);
+    //             }
+    //         }
+    //     }, 15)
+    // }
+    // //需求 获取任意对象的任意属性
+    // function getStyle(obj, attr) {
+    //     if (obj.currentStyle) {
+    //         return obj.currentStyle[attr];
+    //     } else {
+    //         return window.getComputedStyle(obj, null)[attr];
+    //     }
+    // }
+    btn.onclick = function() {
+        animate(demo, {
+            "width": 150,
+            "height": 400,
+            "top": 200,
+            "left": 400
+        });
+    }
+
+    function animate(obj, json) {
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function() {
+            for (var k in json) {
+
+                var leader = parseInt(getStyle(obj, k)) || 0;
+                var target = json[k];
+                var step = (target - leader) / 10
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                // console.log(step)
+                if (leader != target) {
+                    obj.style[k] = leader + step + "px";
+                } else {
+                    clearInterval(obj.timer);
+                }
+            }
+        }, 15);
+    }
+
+    function getStyle(obj, attr) {
+        if (obj.currentStyle) {
+            return obj.currentStyle[attr];
+        } else {
+            return window.getComputedStyle(obj, null)[attr];
+        }
+    }
+</script>

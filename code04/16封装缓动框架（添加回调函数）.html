@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #demo {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <div id="demo"></div>
+</body>
+
+</html>
+<script>
+    var btn = document.getElementById("btn");
+    var demo = document.getElementById("demo");
+    //var timer = null;
+
+    // btn.onclick = function () {
+    //     animate(demo, {"width": 150, "height": 400, "top": 200, "left": 400}, function () {
+    //         //alert("动画执行完了");
+    //         animate(demo, {"width": 400, "height": 50, "top": 100, "left": 0}, function () {
+    //             animate(demo, {"width": 400, "height": 200, "top": 300, "left": 800})
+    //         })
+    //     });
+    // }
+
+    // //改变任意对象的任意属性到目标值
+    // //同时改变多个数值属性
+
+    // //被当作参数传递的函数 就是回调函数
+    // function animate(obj, json, fn) {
+    //     clearInterval(obj.timer);
+    //     obj.timer = setInterval(function () {
+    //         var flag = true;//先定义一个标记 flag为true表示可以清楚
+    //         for (var k in json) {
+    //             var leader = parseInt(getStyle(obj, k)) || 0;
+    //             var target = json[k];
+    //             var step = (target - leader) / 10;
+    //             step = step > 0 ? Math.ceil(step) : Math.floor(step);
+    //             obj.style[k] = leader + step + "px";
+    //             if (leader != target) {
+    //                 flag = false;//只要有没达到的就把flag设置为false
+    //             }
+    //         }
+    //         if (flag) {//说明所有属性都到达了目标
+    //             clearInterval(obj.timer);
+    //             if (fn) {
+    //                 fn();//fn后面加小括号 对fn进行调用
+    //             }
+    //         }
+    //     }, 15)
+    // }
+    // //需求 获取任意对象的任意属性
+    // function getStyle(obj, attr) {
+    //     if (obj.currentStyle) {
+    //         return obj.currentStyle[attr];
+    //     } else {
+    //         return window.getComputedStyle(obj, null)[attr];
+    //     }
+    // }
+    btn.onclick = function() {
+        animate(demo, {
+            "width": 150,
+            "height": 400,
+            "top": 200,
+            "left": 400
+        }, function() {
+            //alert("动画执行完了");
+            animate(demo, {
+                "width": 400,
+                "height": 50,
+                "top": 100,
+                "left": 0
+            }, function() {
+                animate(demo, {
+                    "width": 400,
+                    "height": 200,
+                    "top": 300,
+                    "left": 800
+                })
+            })
+        });
+    }
+
+    function animate(obj, json, fn) {
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function() {
+            var flag = true;
+            for (var k in json) {
+
+                var leader = parseInt(getStyle(obj, k)) || 0;
+                var target = json[k];
+                var step = (target - leader) / 10
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                // console.log(step)
+                obj.style[k] = leader + step + "px";
+                if (leader != target) {
+                    flag = flase;
+                }
+            }
+            if (flag) {
+                clearInterval(obj.timer);
+                if(fn) {
+                    fn();
+                }
+            }
+        }, 15);
+    }
+
+    function getStyle(obj, attr) {
+        if (obj.currentStyle) {
+            return obj.currentStyle[attr];
+        } else {
+            return window.getComputedStyle(obj, null)[attr];
+        }
+    }
+</script>

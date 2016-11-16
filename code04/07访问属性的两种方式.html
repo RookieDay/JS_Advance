@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #demo {
+
+            height: 100px;
+            background-color: pink;
+        }
+
+    </style>
+</head>
+<body>
+<div id="demo" style="left: 10px;width: 100px;"></div>
+</body>
+</html>
+<script>
+
+    var demo = document.getElementById("demo");
+    getStyle("left");
+
+
+    //把想要获取的属性的名字传进来 我就在控制台输出属性的数值
+    function getStyle(attr) {
+        console.log(demo.style[attr]);
+    }
+
+
+    var arr = [1, 2, 3, 4, 5];
+
+    arr[0];
+
+
+</script>
