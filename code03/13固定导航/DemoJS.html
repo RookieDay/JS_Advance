@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        .main {
+            margin: 0 auto;
+            width: 1000px;
+            margin-top: 10px;
+
+        }
+
+        .fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="top" id="topPart">
+    <img src="images/top.png" alt=""/>
+</div>
+<div class="nav" id="navBar">
+    <img src="images/nav.png" alt=""/>
+</div>
+<div class="main" id="mainPart">
+    <img src="images/main.png" alt=""/>
+</div>
+</body>
+</html>
+<script src="tools.js" type="text/javascript"></script>
+<script>
+    //找人
+    var topPart = $("topPart");
+    var navBar = $("navBar");
+    var mainPart = $("mainPart");
+
+    //页面滚动的时候 进行判断 如果页面被卷去的头部大于topPart的高度 将navBar变为固定定位
+    window.onscroll = function () {
+        if (scroll().top > topPart.offsetHeight) {
+            //alert("到啦");
+            //将navBar变为固定定位
+            navBar.className = "nav fixed";
+            //navBar脱离标准流之后就不占位了 所以下面就一下就跳上去了
+            mainPart.style.paddingTop = navBar.offsetHeight + "px";
+        } else {
+            navBar.className = "nav";
+            mainPart.style.paddingTop = 0;
+        }
+    }
+
+</script>

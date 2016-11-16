@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        body {
+            height: 3000px;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    /*正常浏览器（除了ie678之外的浏览器）
+     window.pageYOffset
+     已经声明DTD（标准模式）
+     document.documentElement.scrollTop
+     未声明 DTD（怪异模式）
+     document.body.scrollTop*/
+
+    window.onscroll = function () {
+        //var scrollTop = window.pageYOffset;
+        //var scrollTop = document.documentElement.scrollTop;
+        //var scrollTop = document.body.scrollTop;
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+        document.title = scrollTop;
+    }
+
+</script>

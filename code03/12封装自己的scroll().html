@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            height: 3000px;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    window.onscroll = function () {
+        document.title = scroll().top;
+    }
+
+    /*正常浏览器（除了ie678之外的浏览器）
+     window.pageYOffset
+     已经声明DTD（标准模式）
+     document.documentElement.scrollTop
+     未声明 DTD（怪异模式）
+     document.body.scrollTop*/
+
+
+
+    //这个方法可以给调用者提供 页面被卷去的top值和left值
+    function scroll() {
+        if (window.pageYOffset != null) {
+            return {
+                "top": window.pageYOffset,
+                "left": window.pageXOffset
+            };
+        } else if (document.compatMode == "CSS1Compat") {
+            //说明是标准模式 有DTD
+            return {
+                "top": document.documentElement.scrollTop,
+                "left": document.documentElement.scrollLeft
+            };
+        } else {
+            return {
+                "top": document.body.scrollTop,
+                "left": document.body.scrollLeft
+            };
+        }
+    }
+
+</script>

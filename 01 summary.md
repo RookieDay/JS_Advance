@@ -328,6 +328,44 @@ Math对象
     调用开始先清理定时器，防止多次调用
 
 
+缓动动画
+原理公式
+    动画公式
+    leader = leader + step
+    匀速动画公式
+    step = 定值
+    leader = leader + step
+    缓动动画公式
+    step = ( target - leader ) / 10
+    leader = leader + step
+缓动动画的好处
+    他的移动是有尽头的。不像基础匀速运动那样无限移动。
+    有非常逼真的缓动效果，实现的动画效果更细腻。
+    如果不清除定时器，物体永远跟着目标leader在移动。
 
 
+document.documentElement --- 文档的根节点
+    文档的兼容模式
+    document.compatMode
+    BackCompat   未声明DTD（怪异模式）
+    CSS1Compat  已经声明DTD（标准模式）
+    @窗体的滚动事件
+    窗体每滚动一像素都会触发该事件
+    window.onscroll = function () { 语句 }
 
+scroll正传
+    @scrollHeight和scrollWidth
+    对象内部实际内容的高度/宽度
+    @scrollTop和scrollLeft
+    被卷去部分的 顶部/左侧 到可视区域 顶部/左侧 的距离
+页面滚动座标
+    @页面滚动座标的兼容写法
+    页面滚动座标非常常用，但是有很大的兼容性问题
+    正常浏览器（除了ie678之外的浏览器）
+    window.pageYOffset
+    已经声明DTD（标准模式）
+    document.documentElement.scrollTop
+    未声明 DTD（怪异模式）
+    document.body.scrollTop
+    可以合写为
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;

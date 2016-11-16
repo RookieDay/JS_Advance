@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            position: absolute;
+            left: 400px;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">奔跑吧盒子</button>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    //要做事先找人
+    var btn = document.getElementById("btn");
+    var box = document.getElementById("box");
+    var timer = null;
+
+    //点击按钮让盒子奔跑
+    btn.onclick = function () {
+        clearInterval(timer);//为了防止重复调用
+        timer = setInterval(function () {
+            //step=(target-leader)/10
+            //leader = leader + step
+            var target = 0;
+            var leader = box.offsetLeft;//盒子的left值
+            //offsetLeft获取到的数值属性是整数396.4 396
+            var step = (target - leader) / 10;
+            /*if (step > 0) {
+             step = Math.ceil(step);
+             } else {
+             step = Math.floor(step);
+             }*/
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            console.log("target:" + target + "---leader:" + leader + "---step:" + step);
+
+            if (leader != target) {//说明还没有到
+                box.style.left = leader + step + "px";
+            } else {//说明到了
+                clearInterval(timer);
+            }
+        }, 15)
+    }
+
+
+</script>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    var obj = {};//对象直接量
+    //我的名字叫小洞洞我的年龄是18岁
+    //我和别人打招呼的时候说:我的名字叫小洞洞我的年龄是18岁
+    obj.name = "xiaodongdogn";
+    obj.age = 18;
+    obj.sayHello = function () {
+        alert("大家好我叫" + obj.name + "我永远" + obj.age + "我今晚给大家跳舞");
+    }
+
+    var obj1 = {
+        name: "xiaodongdong",
+        age: 18,
+        sayHello: function () {
+            alert("大家好我叫" + obj.name + "我永远" + obj.age + "我今晚给大家跳舞");
+        }
+    }
+
+    //用声明对象的格式去记录数据 这种格式就叫JSON
+    var json = {
+        // 键值对
+        // key value
+        // k v
+        "name": "xiaodongdong",
+        "age": 18,
+        "sayHello": function () {
+            alert("大家好我叫" + obj.name + "我永远" + obj.age + "我今晚给大家跳舞");
+        }
+    }
+
+
+</script>
