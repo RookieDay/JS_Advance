@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    var arr = [1, 2, 3, 4, 5];
+
+    //将数组传入方法 获取这个数组的 最小值以及最小值的索引
+    function getMin(arr) {
+        //因为要返回两个数值 所以可以通过返回对象的形式把想要返回的东西挂在对象身上
+        var min = {};//对象的直接量定义法
+        min.minIndex = 0;
+        min.value = arr[min.minIndex];
+
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] < min.value) {
+                min.value = arr[i];//新的最小值
+                min.minIndex = i;//新的最小值的索引
+            }
+        }
+        return min;
+    }
+
+    console.log(getMin(arr).minIndex);
+    console.log(getMin(arr).value);
+
+
+</script>

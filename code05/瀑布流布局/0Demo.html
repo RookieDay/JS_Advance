@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            float: left;
+            border: 1px solid #CCC;
+            padding: 5px;
+        }
+
+    </style>
+    <script>
+        //第一行比较特殊 是通过float:left自然排列
+        //第二行的图片开始 通过JS计算他的位置
+        //top是最短的那一列的高度 left最短的那一列的图片的offsetLeft
+        //触底之后会自动加载
+        //(.box>img[src="images/P_00$.jpg"])*9
+        window.onload = function () {
+            //要做事先找人
+            var container = document.getElementById("container");
+            var boxes = container.children;
+            //1.计算第一行有几张 (屏幕宽度/盒子宽度)
+            var pageWidth = window.innerWidth;//客户端的宽度
+            var boxWidth = boxes[0].offsetWidth;//盒子的宽度
+            var column = Math.floor(pageWidth / boxWidth);
+            //alert(column);
+            //2.用一个数组保存高度值
+            var arrHeight = [];
+
+            function waterfall() {
+                for (var i = 0; i < boxes.length; i++) {
+                    if (i < column) {
+                        //说明是第一行的
+                        arrHeight[i] = boxes[i].offsetHeight;
+                    } else {
+                        //说明是后面的
+                        var minHeight = getMin(arrHeight).value;
+                        var minHeightIndex = getMin(arrHeight).minIndex;
+                        //想要设置的top和left生效必须加定位
+                        boxes[i].style.position = "absolute";
+                        //top 就是最小的高度
+                        boxes[i].style.top = minHeight + "px";
+                        //left 就是最小高度数值的索引对应的盒子的offsetLeft
+                        boxes[i].style.left = boxes[minHeightIndex].offsetLeft + "px";
+                        //把盒子放上去之后 要对数组的高度数值进行更新
+                        arrHeight[minHeightIndex] = minHeight + boxes[i].offsetHeight;
+                    }
+                }
+            }
+
+            //一开始先调用一次
+            waterfall();
+
+            //页面滚动的时候判断是否触底
+            window.onscroll = function () {
+                if (bottomed()) {
+                    //alert("到啦");
+                    //如果触底了就该从后台加载数据
+                    //由于现在还没有学习AJAX 我们先用写死的变量替代
+                    var json = [
+                        {"src": "images/P_000.jpg"},
+                        {"src": "images/P_001.jpg"},
+                        {"src": "images/P_002.jpg"},
+                        {"src": "images/P_003.jpg"},
+                        {"src": "images/P_004.jpg"},
+                        {"src": "images/P_005.jpg"},
+                        {"src": "images/P_006.jpg"},
+                        {"src": "images/P_007.jpg"},
+                        {"src": "images/P_008.jpg"},
+                        {"src": "images/P_009.jpg"},
+                    ];
+                    //遍历从后台获取的json
+                    for (var i = 0; i < json.length; i++) {
+                        //根据返回的数据去创建节点
+                        //div.box>img[src]
+                        var div = document.createElement("div");//创建div节点
+                        div.className = "box";//给div添加类名
+                        var img = document.createElement("img");//创建img节点
+                        img.src = json[i].src;//给img节点添加路径的属性
+                        div.appendChild(img);//把img追加到div上
+                        container.appendChild(div);//把div追加到容器最后
+                    }
+                    //新的数据家在完成后再调用一次
+                    waterfall();
+                }
+            }
+
+            function bottomed() {
+                //页面被卷去的头部+可视区域的高度>最后一个盒子的offsetTop 就到啦
+                //页面被卷去的头部
+                var scrollTop = window.pageYOffset;
+                //可视区域的高度
+                var clientHeight = window.innerHeight;
+                //boxes.length盒子的总个数
+                //boxes.length - 1最后一个盒子的索引号
+                //boxes[boxes.length - 1]最后一个盒子
+                //boxes[boxes.length - 1].offsetTop就是最后一个盒子的offsetTop
+                var lastBoxTop = boxes[boxes.length - 1].offsetTop;
+                //页面被卷去的头部+可视区域的高度>最后一个盒子的offsetTop 就到啦
+                if ((scrollTop + clientHeight) > lastBoxTop) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+
+            console.log(arrHeight);
+            console.log(minHeight);
+            console.log(minHeightIndex);
+
+            function getMin(arr) {
+                //因为要返回两个数值 所以可以通过返回对象的形式把想要返回的东西挂在对象身上
+                var min = {};//对象的直接量定义法
+                min.minIndex = 0;
+                min.value = arr[min.minIndex];
+
+                for (var i = 0; i < arr.length; i++) {
+                    if (arr[i] < min.value) {
+                        min.value = arr[i];//新的最小值
+                        min.minIndex = i;//新的最小值的索引
+                    }
+                }
+                return min;
+            }
+
+        }
+
+
+    </script>
+</head>
+<body>
+<div class="container" id="container">
+    <div class="box"><img src="images/P_000.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_001.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_002.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_003.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_004.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_005.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_006.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_007.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_008.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_009.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_010.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_011.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_012.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_013.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_014.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_015.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_016.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_017.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_018.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_019.jpg" alt=""/></div>
+</div>
+</body>
+</html>

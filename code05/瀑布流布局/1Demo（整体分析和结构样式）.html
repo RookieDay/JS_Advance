@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            float: left;
+            border: 1px solid #CCC;
+            padding: 5px;
+        }
+
+    </style>
+    <script>
+        //第一行比较特殊 是通过float:left自然排列
+        //第二行的图片开始 通过JS计算他的位置
+        //top是最短的那一列的高度 left最短的那一列的图片的offsetLeft
+        //触底之后会自动加载
+        //(.box>img[src="images/P_00$.jpg"])*9
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="box"><img src="images/P_000.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_001.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_002.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_003.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_004.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_005.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_006.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_007.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_008.jpg" alt=""/></div>
+    <div class="box"><img src="images/P_009.jpg" alt=""/></div>
+</div>
+</body>
+</html>

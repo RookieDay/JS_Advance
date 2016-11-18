@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    fn();
+    var a = 1;
+    console.log(a);//1
+    function fn(){
+        console.log(a);//1
+        a = 0;
+        console.log(a);//0
+    }
+
+    console.log(a);//0
+</script>
