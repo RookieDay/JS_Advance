@@ -423,4 +423,49 @@ clientTop和clientLeft
     @封装获取样式属性值的兼容方法
         //需求 获取任意对象的任意属性
 
+事件对象简介
+    @事件对象简介
+        在触发事件时，会产生一个事件对象event，这个对象中包含着与事件有关的信息。
+        所有浏览器都支持event对象，但支持的方式不同。
+        比如鼠标操作时候，会添加鼠标位置的相关信息到事件对象中。
+        普通浏览器支持 传入参数
+        ie 678 支持 window.event
+    @事件对象的兼容性写法
+    var event = event || window.event;
 
+clientX   clientY
+当前窗口的左上角为基准点
+pageX    pageY
+以当前文档的左上角为基准点
+screenX  screenY
+当前屏幕的左上角为基准点
+
+
+事件冒泡简介
+    当一个元素上的事件被触发的时候，比如说鼠标点击了一个按钮，同样的事件将会在那个元素的所有祖先元素中被触发。这一过程被称为事件冒泡；这个事件从原始元素开始一直冒泡到DOM树的最上层。
+    顺序
+    IE 6.0: 
+    div -> body -> html -> document
+    其他浏览器: 
+    div -> body -> html -> document -> window
+    不是所有的事件都能冒泡。以下事件不冒泡：blur、focus、load、unload
+    @冒泡的逻辑问题
+阻止冒泡的方法
+    标准浏览器 和  ie浏览器  
+    w3c的方法是event.stopPropagation()   propagation  传播          
+    IE678是event.cancelBubble = true   bubble 泡泡  冒泡    
+    @阻止事件冒泡
+    兼容的写法： 
+    if(event && event.stopPropagation)
+    {
+    event.stopPropagation();  //  w3c 标准
+    } else {
+    event.cancelBubble = true;  // ie 678  ie浏览器
+    }
+
+事件目标 targetId
+    返回当前事件对象的id
+    火狐谷歌等 event.target.id
+    IE678      event.srcElement.id
+    兼容性写法：
+    var targetId = event.target ? event.target.id : event.srcElement.id;

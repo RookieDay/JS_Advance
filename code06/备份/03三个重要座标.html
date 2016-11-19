@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            height: 3000px;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    document.onclick = function (event) {
+        var event = event || window.event;
+        console.log(event.clientX + "---" + event.clientY);
+        //console.log(event.pageX + "---" + event.pageY);
+        console.log(event.screenX + "---" + event.screenY);
+
+        var pageX = event.pageX || event.clientX + document.documentElement.scrollLeft;
+        var pageY = event.pageY || event.clientY + document.documentElement.scrollTop;
+
+    }
+
+</script>

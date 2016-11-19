@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button id="btn">按钮</button>
+</body>
+</html>
+<script>
+
+    var btn = document.getElementById("btn");
+
+    document.onclick = function () {
+        alert("页面被点击了");
+    }
+    btn.onclick = function (event) {
+        alert("按钮被点击了");
+
+        var event = event || window.event;
+        if (event && event.stopPropagation) {//短路表达式
+            //说明是正常浏览器
+            event.stopPropagation();
+        } else {
+            event.cancelBubble = true;
+        }
+
+
+    }
+
+</script>

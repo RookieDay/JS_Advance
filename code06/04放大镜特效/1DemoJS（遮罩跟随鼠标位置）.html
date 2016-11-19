@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 350px;
+            height: 350px;
+            margin: 100px;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+
+        .big {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            top: 0;
+            left: 360px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            display: none;
+        }
+
+        .mask {
+            width: 175px;
+            height: 175px;
+            background: rgba(255, 255, 0, 0.4);
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: move;
+            display: none;
+        }
+
+        .small {
+            position: relative;
+        }
+
+        .box img {
+            vertical-align: top;
+        }
+
+        #bigBox > img {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <div class="small" id="smallBox">
+        <img src="images/001.jpg" width="350" alt=""/>
+
+        <div class="mask" id="mask"></div>
+    </div>
+    <div class="big" id="bigBox">
+        <img src="images/0001.jpg" width="800" alt=""/>
+    </div>
+</div>
+</body>
+</html>
+<script>
+
+    //找人
+    var box = document.getElementById("box");
+    var smallBox = document.getElementById("smallBox");
+    var mask = document.getElementById("mask");
+    var bigBox = document.getElementById("bigBox");
+    //alert(box.offsetLeft);
+
+    //鼠标经过盒子 显示mask 和 显示bigBox
+    smallBox.onmouseover = function () {
+        mask.style.display = "block";
+        bigBox.style.display = "block";
+    }
+    //鼠标离开盒子 隐藏mask 和 隐藏bigBox
+    smallBox.onmouseout = function () {
+        mask.style.display = "none";
+        bigBox.style.display = "none";
+    }
+    //鼠标在smallBox中移动 获取鼠标在盒子中的座标 让mask跟随鼠标位置
+    smallBox.onmousemove = function (event) {
+        var event = event || window.event;
+        //鼠标在页面上的座标
+        var pageX = event.pageX || event.clientX + document.documentElement.scrollLeft;
+        var pageY = event.pageY || event.clientY + document.documentElement.scrollTop;
+        //计算鼠标在smallBox中的座标
+        var boxX = pageX - box.offsetLeft;
+        var boxY = pageY - box.offsetTop;
+        //根据鼠标在盒子中的座标去设置mask的位置
+        var maskX = boxX - mask.offsetWidth / 2;
+        var maskY = boxY - mask.offsetHeight / 2;
+
+        //对遮罩位置进行设置
+        mask.style.left = maskX + "px";
+        mask.style.top = maskY + "px";
+
+
+    }
+
+
+</script>

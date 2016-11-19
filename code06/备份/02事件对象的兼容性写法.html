@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    //其实我们注册的事件的Function是被浏览器调用的
+    /*document.onclick = function (event) {
+     alert(event);
+     //console.log(event);
+     }*/
+    /*document.onclick = function () {
+     alert(window.event);
+     //console.log(event);
+     }*/
+    document.onclick = function (event) {
+        var event = event || window.event;
+        //alert(event);
+        //console.log(event);
+    }
+
+
+    cl("bbbb");
+
+    function cl() {
+        console.log("aaa");
+    }
+
+</script>

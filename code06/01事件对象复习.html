@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    document.onclick = function (event) {
+        var event = event || window.event;
+
+        //event.clientX//相对于客户端的位置
+        //event.pageX//相对于页面的位置
+        //event.screenX//相对于屏幕的位置
+
+        var pageX = event.pageX || event.clientX + document.documentElement.scrollLeft;
+        var pageY = event.pageY || event.clientY + document.documentElement.scrollTop;
+
+
+    }
+
+</script>
