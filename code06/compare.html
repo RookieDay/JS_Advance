@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .scroll1 {
+            width: 200px;
+            height: 8px;
+            background-color: #ccc;
+            position: relative;
+            margin: 100px;
+        }
+        
+        .scroll2 {
+            width: 400px;
+            height: 8px;
+            background-color: #ccc;
+            margin: 100px;
+            position: relative;
+        }
+        
+        .bar1,
+        .bar2 {
+            width: 10px;
+            height: 22px;
+            background-color: #369;
+            position: absolute;
+            top: -7px;
+            left: 0;
+            cursor: pointer;
+        }
+        
+        .mask {
+            width: 0;
+            height: 100%;
+            background-color: #369;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scroll1" id="scrollBar1">
+        <div class="bar1">
+
+        </div>
+        <div class="mask">
+
+        </div>
+    </div>
+
+    <div class="scroll2" id="scrollBar2">
+        <div class="bar2">
+
+        </div>
+        <div class="mask">
+
+        </div>
+    </div>
+    <div id="demo"></div>
+</body>
+
+</html>
+<script src="./js/compare.js"></script>
